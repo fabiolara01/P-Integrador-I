@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Alterar Cadastro "{{ edicao['title'] }}" {% endblock %}</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Nome*</label>
+        <input type="text" name="title" placeholder="Nome"
+               class="form-control"
+               value="{{ request.form['title'] or edicao['title'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="contato">Contato</label>
+        <input type="text" name="contato" placeholder="Telefones de contato"
+               class="form-control"
+               value="{{ request.form['contato'] or edicao['contato'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" name="email" placeholder="exemplo@email.com"
+               class="form-control"
+               value="{{ request.form['email'] or edicao['email'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Descrição*</label>
+        <textarea name="content" placeholder="Dados e informações importantes"
+                  class="form-control">{{ request.form['content'] or edicao['content'] }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <input type="text" name="tipo" placeholder="Tipo de cadastro. Exemplo: V para Voluntario"
+               class="form-control"
+               value="{{ request.form['tipo'] or edicao['tipo'] }}">
+        </input>
+    </div>
+
+    <p> * Campos obrigatórios </p>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Alterar</button>
+    </div>
+</form>
+<form action="{{ url_for('delete', id=edicao['id']) }}" method="POST">
+        <input type="submit" value="Apagar"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Deseja realmente apagar este registro?')">
+        <h3><a href="/voluntarios">
+            <span class="badge badge-warning">Voltar</span>
+        </a></h3>
+        </form>
+{% endblock %}

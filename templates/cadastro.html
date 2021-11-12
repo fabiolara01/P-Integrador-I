@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %} Cadastro {% endblock %}</h1><hr>
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Nome*</label>
+        <input type="text" name="title" placeholder="Nome"
+               class="form-control"
+               value="{{ request.form['title'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="contato">Contato</label>
+        <input type="text" name="contato" placeholder="Telefones de contato"
+               class="form-control"
+               value="{{ request.form['contato'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" name="email" placeholder="exemplo@email.com"
+               class="form-control"
+               value="{{ request.form['email'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Descrição*</label>
+        <textarea name="content" placeholder="Dados e informações importantes"
+                  class="form-control">{{ request.form['content'] }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <input type="text" name="tipo" placeholder="Tipo de cadastro. Exemplo: 'V' para Voluntario"
+               class="form-control"
+               value="{{ request.form['tipo'] }}">
+        </input>
+    </div>
+
+    <p> * Campos obrigatórios </p>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <h3><a href="/voluntarios">
+            <span class="badge badge-warning">Voltar</span>
+        </a></h3>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{% block title %} OUTROS CADASTROS {% endblock %}</h1><hr>
+        <h3><a href="/cadastro">
+            <span class="badge badge-warning">Novo</span></a>
+        <a href="/escola">
+            <span class="badge badge-warning">Voltar</span>
+        </a>
+        </h3><hr>
+     {% for post in other %}
+    {% if post.tipo != 'M' and post.tipo != 'V' %}
+    <a href="{{ url_for('post', post_id=post['id']) }}">
+        <h2>{{ post['title'] }} </h2>
+    </a>
+    <span class="badge badge-primary"> {{post['contato'] }}</span>
+    <hr>
+    {% endif %}
+    {% endfor %}
+{% endblock %}

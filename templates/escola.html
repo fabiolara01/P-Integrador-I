@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{% block title %} Acesso Restrito {% endblock %}</h2>
+
+<h3>{% block body %} MENSAGENS <br>
+    <a href= "/mensagens"> Mensagens</a> <hr>
+
+    VOLUNTÁRIOS <br>
+     <a href= "/voluntarios"> Voluntarios</a> <hr>
+
+    OUTROS CADASTROS <br>
+     <a href= "/outros"> Outros Cadastros</a> <hr>
+
+    {% endblock %}</h3>
+{% endblock %}

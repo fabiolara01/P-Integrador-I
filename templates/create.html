@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %} Fale conosco {% endblock %}</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Título da mensagem*</label>
+        <input type="text" name="title" placeholder="Elogio, Sugestão, Reclamação, etc"
+               class="form-control" value="{{ request.form['title']  }}"> </input>
+    </div>
+    <div class="form-group">
+        <label for="content"> Conteúdo da mensagem*</label>
+        <textarea name="content" placeholder="Esta mensagem pode ser anônima ou forneça seu nome e meios de contato ao final."
+                  class="form-control">{{ request.form['content'] }}</textarea>
+    </div>
+
+    <p> * Campos obrigatórios </p>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <h3><a href="/index">
+            <span class="badge badge-warning">Voltar</span>
+        </a></h3>
+    </div>
+</form>
+
+{% endblock %}
