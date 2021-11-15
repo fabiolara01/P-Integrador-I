@@ -42,9 +42,40 @@ def create():
             return redirect(url_for('index'))
     return render_template('create.html')
 
+@app.route('/valida', methods=('GET', 'POST'))
+def valida():
+    if request.method == 'POST':
+        id = request.form['id']
+        content = request.form['content']
+        padrao = get_post(id)
+        if not id or not content:
+            flash('Campo de preenchimento obrigatório')
+        else:
+            if content == padrao.content:
+                return redirect(url_for('escola'))
+            else:
+                return redirect(url_for('index'))
+    return render_template('valida.html')
+
 @app.route('/escola')
 def escola():
     return render_template('escola.html')
+
+@app.route('/login', methods=('GET', 'POST'))
+def login():
+    if request.method == 'POST':
+        id = request.form['id']
+        title = request.form['title']
+        content = request.form['content']
+        tipo = 'U'
+        if not title or not content:
+            flash('Campo de preenchimento obrigatório')
+        else:
+            new_user = Posts(id=id, title=title, content=content, tipo=tipo)
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('outros'))
+    return render_template('login.html')
 
 @app.route('/mensagens')
 def mensagens():
@@ -128,3 +159,7 @@ def delete(id):
 @app.route('/confirmacao')
 def confirmacao():
     return render_template('confirmacao.html')
+
+@app.route('/sobrenos')
+def sobrenos():
+    return render_template('sobrenos.html')

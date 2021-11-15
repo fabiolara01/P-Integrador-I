@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %} Acesso Restrito {% endblock %}</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="id">Código de Usuário*</label>
+        <input type="text" name="id" placeholder="Informe seu CPF"
+               class="form-control" value="{{ request.form['id']  }}"> </input>
+    </div>
+    <div class="form-group">
+        <label for="content"> Senha*</label>
+        <input type="text" name="content" placeholder="Digite sua senha"
+                  class="form-control" value="{{ request.form['content'] }}"></input>
+    </div>
+
+    <p> * Campos obrigatórios </p>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <h3><a href="/index">
+            <span class="badge badge-warning">Voltar</span>
+        </a></h3>
+    </div>
+</form>
+
+{% endblock %}lock %}
